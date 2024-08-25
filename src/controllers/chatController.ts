@@ -17,18 +17,23 @@ const getChat = async (req: AuthenticatedRequest, res: Response) => {
 const addChat = async (req: AuthenticatedRequest, res: Response) => {
   const { name, surName } = req.body;
 
-  const chat = new Chat({ name, surName, owner: req.user?._id });
+  const chat = new Chat({
+    name,
+    surName,
+    owner: req.user?._id,
+    lastMessage: "",
+  });
   await chat.save();
 
-  res.status(201).json(Chat);
+  res.status(201).json(chat);
 };
 
 const updateChat = async (req: AuthenticatedRequest, res: Response) => {
-  const { title, content } = req.body;
+  const { name, surName } = req.body;
 
   const chat = await Chat.findByIdAndUpdate(
     req.params.id,
-    { title, content },
+    { name, surName },
     { new: true }
   );
   res.json(chat);

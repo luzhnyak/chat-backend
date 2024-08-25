@@ -6,6 +6,7 @@ import logger from "morgan";
 import connectDB from "./config/db";
 import authRoutes from "./routes/authRoutes";
 import chatRoutes from "./routes/chatRoutes";
+import messagesRoutes from "./routes/messageRoutes";
 
 dotenv.config();
 connectDB();
@@ -39,6 +40,7 @@ app.use(express.json());
 
 app.use("/api/auth", authRoutes);
 app.use("/api/chats", chatRoutes);
+app.use("/api/messages", messagesRoutes);
 
 app.use((req, res) => {
   res.status(404).json({ message: "Not found" });
