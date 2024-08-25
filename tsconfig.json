@@ -1,12 +1,15 @@
 {
   "compilerOptions": {
-    "target": "ES6",
+    "target": "ES2020",
     "module": "commonjs",
     "strict": true,
+    "resolveJsonModule": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node",
     "outDir": "./dist"
   },
-  "include": ["src/**/*", "src/types/**/*"],
+  "include": ["src/**/*.ts", "src/types/express/index.d.ts"],
   "exclude": ["node_modules"]
 }

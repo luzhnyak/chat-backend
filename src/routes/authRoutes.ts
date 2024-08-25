@@ -1,10 +1,12 @@
 import { Router } from "express";
-import { register, login } from "../controllers/authController";
+import ctrl from "../controllers/authController";
+import authMiddleware from "../middlewares/authMiddleware";
 
 const router = Router();
 
-router.post("/register", register);
-router.post("/login", login);
+router.post("/register", ctrl.register);
+router.post("/login", ctrl.login);
+router.get("/user", authMiddleware, ctrl.currentUser);
 
 // Add Google Auth routes here
 
