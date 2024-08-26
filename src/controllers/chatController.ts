@@ -4,7 +4,8 @@ import { AuthenticatedRequest } from "../types/express";
 import { ctrlWrapper } from "../helpers";
 
 const getChats = async (req: AuthenticatedRequest, res: Response) => {
-  const chats = await Chat.find().populate("name", "surMame");
+  const chats = await Chat.find({ owner: req.user?._id });
+
   res.json(chats);
 };
 

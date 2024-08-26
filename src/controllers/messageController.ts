@@ -1,8 +1,9 @@
 import { Request, Response } from "express";
-import Message from "../models/message";
 import { AuthenticatedRequest } from "../types/express";
+
 import { ctrlWrapper } from "../helpers";
 import Chat from "../models/chat";
+import Message from "../models/message";
 
 const getMessages = async (req: AuthenticatedRequest, res: Response) => {
   const { chatId } = req.params;
@@ -21,6 +22,8 @@ const addMessage = async (req: AuthenticatedRequest, res: Response) => {
 
   const message = new Message({ text, author: req.user?.name, chatId });
   await message.save();
+
+  console.log("text", text);
 
   await Chat.findByIdAndUpdate(chatId, { lastMessage: text }, { new: true });
 

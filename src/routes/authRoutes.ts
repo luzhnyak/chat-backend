@@ -7,7 +7,7 @@ const router = Router();
 router.post("/register", ctrl.register);
 router.post("/login", ctrl.login);
 router.get("/user", authMiddleware, ctrl.currentUser);
-
-// Add Google Auth routes here
+router.get("/google", ctrl.google);
+router.get("/google-redirect", ctrl.googleRedirect);
 
 export default router;
