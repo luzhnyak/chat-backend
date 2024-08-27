@@ -150,8 +150,6 @@ const googleRedirect = async (req: Request, res: Response) => {
 
   const code = queryParams.code;
 
-  console.log("code", code);
-
   const tokenData = await axios({
     url: `https://oauth2.googleapis.com/token`,
     method: "post",

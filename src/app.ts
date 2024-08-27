@@ -12,7 +12,8 @@ dotenv.config();
 connectDB();
 
 const allowedOrigins = [
-  "https://epharmacy.vercel.app",
+  "https://luzhnyak-aws.pp.ua",
+  "https://express-js-chat.vercel.app",
   "http://localhost:5173",
 ];
 
